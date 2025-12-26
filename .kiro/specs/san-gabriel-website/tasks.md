@@ -1,222 +1,299 @@
 # Implementation Plan
 
-- [x] 1. Set up project foundation and core structure
+- [x] 1. Update services data structure with all 10 services in required order
+
+  - [x] 1.1 Create new services data model with complete service definitions
+
+
+    - Define all 10 services with id, order, name, tagline, businessCase, services list, advantages, pricing, and ctas
+    - Ensure services are ordered: Revenue-Generating Advertising (1), Branding/Banners/Signs (2), Mobile Advertising (3), Monetize Your Location (4), Advertise With Us (5), Social Media & Digital (6), Website Design (7), Events & Community (8), Incorporation Services (9), Strategy/Technology/AI (10)
+    - Include pricing for Mobile Advertising ($300-$500/truck) and Monetize Your Location ($200/window)
+    - _Requirements: 1.3, 4.4, 5.3_
+
+  - [x] 1.2 Write property test for service order consistency
+
+
+    - **Property 1: Service Order Consistency**
+    - **Validates: Requirements 1.3**
+
+  - [x] 1.3 Create portfolio data structure
+
+
+    - Define portfolio items for windows, trucks, banners, websites, events
+    - Include kavin10oc.com and luxuryautocollision.ca with attribution text
+    - Link portfolio items to related services
+    - _Requirements: 8.4, 12.1, 12.2, 12.3_
+
+- [x] 2. Create ServiceHero component for traffic monetization introduction
+
+
+  - Build ServiceHero.jsx with core value proposition display
+  - Implement Traffic → Visibility → Monetization flow visualization
+  - Add responsive layout with gradient background
+  - Include scroll indicator to services below
+  - _Requirements: 1.1, 1.2_
+
+- [x] 3. Create ServiceCard component with business case display
+
+  - [x] 3.1 Implement ServiceCard base component
+
+
+    - Create ServiceCard.jsx with title, tagline, businessCase, services list, advantages, and ctas props
+    - Add expandable business case section showing "Why This Service Exists"
+    - Implement services/formats list display
+    - Add design advantages section (when applicable)
+    - _Requirements: 2.1-2.4, 3.1-3.4_
+
+  - [x] 3.2 Write property test for service card content completeness
+
+
+    - **Property 5: Service Card Content Completeness**
+    - **Validates: Requirements 2.1-2.4, 3.1-3.4, 4.1-4.5, 5.1-5.4, 6.1-6.3, 7.1-7.5, 8.1-8.5, 9.1-9.3, 10.1-10.4, 11.1-11.3**
+
+  - [x] 3.3 Implement ServicePricing component
+
+
+    - Create ServicePricing.jsx for clear pricing display
+    - Show amount, unit (per truck, per window), and conditional notes
+    - Style pricing prominently with visual emphasis
+    - _Requirements: 4.4, 5.3_
+
+  - [x] 3.4 Write property test for pricing display completeness
+
+
+    - **Property 2: Pricing Display Completeness**
+    - **Validates: Requirements 4.4, 5.3**
+
+- [x] 4. Implement CTA buttons with lead form integration
+
+
+  - [x] 4.1 Create CTA button variants for services
+
+
+    - Implement primary and secondary CTA button styles
+    - Add service-specific CTA labels as defined in requirements
+    - Wire CTAs to navigate to lead form with service preselection
+    - _Requirements: 2.4, 3.4, 4.5, 5.4, 6.3, 7.5, 8.5, 9.3_
+
+  - [x] 4.2 Write property test for CTA navigation integrity
+
+
+    - **Property 3: CTA Navigation Integrity**
+    - **Validates: Requirements 13.3**
+
+- [x] 5. Build individual service sections
 
 
 
 
 
+  - [x] 5.1 Implement Revenue-Generating Advertising Solutions section (Service 1)
 
 
+    - Create section with core differentiator positioning
+    - Display business case: rising digital costs, priced-out businesses, under-monetized traffic
+    - Show services: identify locations, deploy assets, match advertisers, manage monetization
+    - Add CTAs: "Turn My Traffic Into Revenue", "Explore Advertising Options"
+    - _Requirements: 2.1, 2.2, 2.3, 2.4_
 
-  - Initialize React project with Create React App
-  - Install and configure Tailwind CSS for styling
-  - Set up project folder structure with components, pages, data, and styles directories
-  - Create basic App.jsx with routing structure
-  - _Requirements: 8.3, 8.4_
-
-- [ ] 2. Create design system and reusable UI components
-  - [x] 2.1 Implement Button component with variants
+  - [x] 5.2 Implement Branding, Banners & Signs section (Service 2)
 
 
+    - Display tagline: banners/signs are revenue-producing infrastructure
+    - List services: roll-up banners, vinyl/mesh banners, step-and-repeat, storefront graphics, lawn signs, posters, vehicle decals
+    - Show design advantages: distance/motion design, high-contrast, QR codes, print-ready
+    - Add CTA: "Request Banner & Sign Quote"
+    - _Requirements: 3.1, 3.2, 3.3, 3.4_
 
-    - Create Button.jsx with primary, secondary, and outline variants
-    - Add size variations (sm, md, lg) with proper styling
-    - Include hover effects and transitions
-    - Write unit tests for Button component
-    - _Requirements: 1.3, 8.5_
-
-  - [x] 2.2 Implement Card component for content display
-
+  - [x] 5.3 Implement Mobile Advertising – Trucking Fleets section (Service 3)
 
 
+    - Display business case: thin margins, unused visibility, advertising offsets costs
+    - List formats: vinyl wraps, trailer-side panels, rear-door ads, magnetic signage, QR-enabled ads
+    - Show pricing: $300–$500 per truck/trailer with conditions
+    - Add CTA: "Earn With My Trucks"
+    - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
 
-    - Create Card.jsx with title, description, icon, and action props
-    - Add hover effects and responsive styling
-    - Include optional action button integration
-    - Write unit tests for Card component
-    - _Requirements: 4.3, 6.3_
+  - [x] 5.4 Implement Monetize Your Location section (Service 4)
 
-  - [ ] 2.3 Create Form components with validation
-
+    - Display business case: rising rents, idle visibility = lost revenue
+    - Show pricing: $200 per window with conditions
+    - Add CTA: "Monetize My Location"
+    - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
 
+  - [x] 5.5 Implement Advertise With Us section (Service 5)
+
+    - Display tagline: affordable advertising for organizations priced out of traditional media
+    - List options: window advertising, storefront signage, event banners, truck/trailer advertising, campaign placements
+    - Add CTA: "Advertise My Business"
+    - _Requirements: 6.1, 6.2, 6.3_
 
 
+  - [x] 5.6 Implement Social Media & Digital Advertising section (Service 6)
 
-
-
-
-
-
-
-
-
-
-
-    - Implement FormField.jsx for different input types
-    - Add client-side validation with error display
-    - Create form styling consistent with design system
-    - Write unit tests for form validation logic
-    - _Requirements: 7.3, 7.4_
-
-- [ ] 3. Implement header and navigation system
-  - [ ] 3.1 Create responsive header component
-    - Build Header.jsx with logo and navigation
-    - Implement hamburger menu for mobile devices
-    - Add smooth scroll navigation to sections
-    - Include sticky header behavior on scroll
-    - _Requirements: 8.2, 9.3_
-
-  - [ ] 3.2 Implement navigation functionality
-    - Create Navigation.jsx with responsive menu
-    - Add smooth scrolling to page sections
-    - Implement mobile menu toggle functionality
-    - Add active section highlighting
-    - _Requirements: 1.5, 8.2_
-
-- [ ] 4. Build hero section with call-to-action
-  - Create Hero.jsx component with responsive layout
-  - Implement headline and subheadline with proper typography
-  - Add primary and secondary CTA buttons with navigation
-  - Include background gradient and responsive design
-  - Add scroll indicator for below-the-fold content
-  - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
-
-- [ ] 5. Implement trust indicators section with animations
-  - Create TrustIndicators.jsx with grid layout
-  - Implement counter animation using Intersection Observer
-  - Add responsive grid (2x2 mobile, 4x1 desktop)
-  - Include icons and descriptive text for each statistic
-  - Write animation logic for number counting effect
-  - _Requirements: 2.1, 2.2, 2.3, 2.4_
-
-- [ ] 6. Build "How It Works" process section
-  - Create HowItWorks.jsx with 3-step process display
-  - Implement horizontal card layout with connecting elements
-  - Add responsive behavior (accordion on mobile)
-  - Include step icons, numbers, and descriptive content
-  - Add progressive visual flow animations
-  - _Requirements: 3.1, 3.2, 3.3, 3.4_
-
-- [ ] 7. Create services overview section
-  - [ ] 7.1 Implement services data structure
-    - Create services.js with all service categories and details
-    - Define service objects with required properties
-    - Include deliverables, target audience, and descriptions
-    - Add category groupings and featured service flags
-    - _Requirements: 4.2, 5.2, 10.2_
-
-  - [ ] 7.2 Build ServicesOverview component
-    - Create ServicesOverview.jsx with grid layout
-    - Implement service category cards with hover effects
-    - Add "Learn More" buttons with navigation
-    - Include responsive grid behavior
-    - _Requirements: 4.1, 4.2, 4.3, 4.4_
-
-- [ ] 8. Implement featured services section
-  - [ ] 8.1 Create tabbed interface for services
-    - Build FeaturedServices.jsx with tab functionality
-    - Implement smooth transitions between service tabs
-    - Add service details display with structured information
-    - Include expandable content areas
-    - _Requirements: 5.1, 5.3_
-
-  - [ ] 8.2 Add service detail display and CTAs
-    - Create service detail cards with deliverables lists
-    - Implement "Best For" sections and descriptions
-    - Add "Get Started" buttons with form integration
-    - Include pre-populated form functionality
-    - _Requirements: 5.2, 5.4_
-
-- [ ] 9. Build "Why Choose Us" section
-  - Create WhyChooseUs.jsx with value proposition display
-  - Implement 3-4 column layout with supporting points
-  - Add icons and descriptive text for each benefit
-  - Include responsive layout behavior
-  - _Requirements: 6.1, 6.2, 6.3, 6.4_
-
-- [ ] 10. Implement lead generation form
-  - [ ] 10.1 Create form structure and validation
-    - Build LeadForm.jsx with all required fields
-    - Implement dropdown options for service interest and preferences
-    - Add client-side validation with error handling
-    - Create form submission logic with success/error states
+    - Display business case: physical ads need digital support, consistent messaging, social proof
+    - List services: account setup, content creation, campaign support, community engagement, analytics
+    - Show pricing guidance: monthly packages, campaign-based pricing
+    - Add CTA: "Grow My Online Presence"
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-  - [ ] 10.2 Add form integration and submission handling
-    - Implement form submission to email service or API
-    - Add loading states and confirmation messages
-    - Include form reset functionality after successful submission
-    - Add privacy notice and terms acceptance
-    - _Requirements: 7.5_
 
-- [ ] 11. Create footer with company information
-  - Build Footer.jsx with multi-column layout
-  - Add company information, quick links, and contact details
-  - Implement social media links with external navigation
-  - Include copyright, privacy policy, and terms links
-  - Add responsive layout for mobile devices
-  - _Requirements: 9.1, 9.2, 9.3, 9.4_
+  - [x] 5.7 Implement Website Design & Development section (Service 7)
 
-- [ ] 12. Implement service detail pages
-  - [ ] 12.1 Create service detail page structure
-    - Build ServiceDetail.jsx component for individual services
-    - Implement dynamic routing for service categories
-    - Add breadcrumb navigation and page structure
-    - Include consistent branding and navigation
-    - _Requirements: 10.1, 10.4_
-
-  - [ ] 12.2 Add detailed service information display
-    - Create detailed service descriptions and deliverables
-    - Implement pricing information display where applicable
-    - Add clear calls-to-action for consultations
-    - Include related services suggestions
-    - _Requirements: 10.2, 10.3_
-
-- [ ] 13. Add responsive design and mobile optimization
-  - [ ] 13.1 Implement mobile-first responsive layouts
-    - Apply responsive breakpoints to all components
-    - Test and optimize mobile navigation experience
-    - Ensure touch-friendly interactive elements
-    - Add mobile-specific layout adaptations
-    - _Requirements: 8.1, 8.2_
-
-  - [ ] 13.2 Optimize performance and loading
-    - Implement lazy loading for images and components
-    - Add image optimization and responsive sizing
-    - Optimize bundle size and code splitting
-    - Test and improve Core Web Vitals scores
-    - _Requirements: 8.3, 8.4_
-
-- [ ] 14. Add animations and micro-interactions
-  - [ ] 14.1 Implement scroll-based animations
-    - Add fade-in animations using Intersection Observer
-    - Create staggered animations for card grids
-    - Implement smooth scroll behavior for navigation
-    - Add loading and transition animations
-    - _Requirements: 8.5_
-
-  - [ ] 14.2 Add hover effects and micro-interactions
-    - Implement button hover states with transitions
-    - Add form field focus states and validation feedback
-    - Create loading spinners and success animations
-    - Include reduced motion preferences support
-    - _Requirements: 8.5_
-
-- [ ] 15. Integrate content and final testing
-  - [ ] 15.1 Add all content and copy
-    - Integrate final copy for all sections
-    - Add service descriptions and detailed information
-    - Include company information and contact details
-    - Add placeholder images and optimize for production
-    - _Requirements: All content requirements_
-
-  - [ ] 15.2 Perform comprehensive testing and optimization
-    - Test all form functionality and validation
-    - Verify responsive behavior across devices
-    - Test navigation and scroll functionality
-    - Perform accessibility testing and improvements
-    - Optimize for SEO and performance metrics
+    - Display business case: weak websites leak leads, credibility converts traffic
+    - List services: business websites, landing pages, mobile-optimized, SEO-ready
+    - Include portfolio proof: kavin10oc.com, luxuryautocollision.ca with attribution
+    - Add CTA: "Build My Website"
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
+
+  - [x] 5.8 Implement Events & Community Advertising section (Service 8)
+
+
+    - List services: event banners, sponsor walls, on-site layouts, post-event reuse
+    - Add CTA: "Brand My Event"
+    - _Requirements: 9.1, 9.2, 9.3_
+
+
+  - [x] 5.9 Implement Incorporation & Not-for-Profit Services section (Service 9)
+
+    - Position as supporting ecosystem service (not leading)
+    - List services: business incorporation, NUANS® searches, not-for-profit incorporation, governance guidance
+    - Add appropriate CTA
+    - _Requirements: 10.1, 10.2, 10.3, 10.4_
+
+
+
+  - [x] 5.10 Implement Strategy, Technology & AI section (Service 10)
+    - List services: campaign strategy, CRM & automation, reporting dashboards, AI-assisted engagement
+    - Add appropriate CTA
+    - _Requirements: 11.1, 11.2, 11.3_
+
+- [x] 6. Create Portfolio section with visual showcase
+
+
+
+
+
+  - [x] 6.1 Implement PortfolioSection component
+
+
+    - Create visual-first grid layout for portfolio items
+    - Add category filters: windows, trucks, banners, websites, events
+    - Implement lazy loading for images
+    - _Requirements: 12.1, 12.2_
+
+
+
+  - [x] 6.2 Implement PortfolioItem component
+
+
+
+
+
+    - Create individual portfolio item display with image, title, description
+    - Add hover effects to reveal details
+
+
+    - Include links to live websites where applicable
+    - _Requirements: 12.1, 12.4_
+
+  - [x] 6.3 Write property test for portfolio website attribution
+
+
+
+
+
+    - **Property 4: Portfolio Website Attribution**
+    - **Validates: Requirements 8.4, 12.3**
+
+- [x] 7. Implement FinalCTA section at bottom of page
+
+
+
+
+
+
+  - [x] 7.1 Create FinalCTA component
+
+    - Display headline: "Turn Visibility Into Revenue"
+    - Add three CTA buttons: "Monetize My Location", "Advertise My Business", "Earn With My Trucks"
+    - Wire CTAs to lead form with appropriate service preselection
+    - _Requirements: 13.1, 13.2, 13.3_
+
+
+
+  - [x] 7.2 Write property test for final CTA section presence
+
+
+
+
+
+    - **Property 6: Final CTA Section Presence**
+    - **Validates: Requirements 13.1, 13.2**
+
+- [x] 8. Update Services page to integrate all components
+
+
+
+
+
+  - Rebuild Services.jsx with ServiceHero at top
+  - Render all 10 service sections in required order using ServiceCard
+  - Integrate PortfolioSection (dedicated section + inline items)
+  - Add FinalCTA at bottom
+  - Ensure smooth scroll navigation between sections
+  - _Requirements: 1.1, 1.2, 1.3_
+
+- [x] 9. Implement responsive design and mobile optimization
+
+  - [x] 9.1 Apply responsive layouts to all service components
+    - Stack service cards vertically on mobile (< 768px)
+    - Ensure touch-friendly button sizing (min 44px tap targets)
+    - Implement collapsible business case sections on mobile
+    - _Requirements: 14.1_
+
+  - [x] 9.2 Write property test for responsive layout adaptation
+
+    - **Property 7: Responsive Layout Adaptation**
+    - **Validates: Requirements 14.1**
+
+- [x] 10. Add animations and micro-interactions
+
+
+
+
+
+  - Implement fade-in animations for service cards on scroll
+  - Add staggered animations for service lists
+  - Create smooth scroll behavior for CTA navigation
+  - Add hover effects for CTAs and portfolio items
+  - Respect reduced motion preferences
+  - _Requirements: 14.3, 14.4_
+
+- [x] 11. Final integration and testing
+
+
+
+
+
+
+  - [x] 11.1 Integrate all content and verify completeness
+
+    - Verify all 10 services display in correct order
+    - Confirm all pricing is displayed correctly
+    - Validate portfolio items include required websites with attribution
+    - Test all CTA buttons navigate correctly
+    - _Requirements: All_
+
+  - [x] 11.2 Run all property-based tests
+
+
+    - Execute fast-check tests for all 7 properties
+    - Ensure minimum 100 iterations per property
+    - Fix any failing tests
+    - _Requirements: All correctness properties_
+
+- [ ] 12. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
