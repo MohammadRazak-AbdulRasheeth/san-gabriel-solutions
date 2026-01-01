@@ -1,0 +1,384 @@
+# Implementation Plan: Owner-Operator Software Landing Page
+
+## Overview
+
+This implementation plan creates a conversion-focused landing page for owner-operators at `/owner-operator-software`. The page follows existing San Gabriel website patterns using React, React Router, Framer Motion, and Tailwind CSS. Implementation is organized to build incrementally with early validation of core functionality.
+
+## Tasks
+
+- [x] 1. Create data file and page structure
+  - [x] 1.1 Create ownerOperatorContent.js data file with all page content
+    - Create `src/data/ownerOperatorContent.js`
+    - Include hero, pain, solution, timePayback, urgency, calendar, qualification, footerCTA, and stickyCTA content objects
+    - _Requirements: 2.1-2.5, 3.1-3.3, 4.1-4.3, 5.1-5.3, 6.1-6.3, 7.1-7.4, 8.1-8.3, 9.1-9.2, 10.3_
+  - [x] 1.2 Create OwnerOperatorSoftware page component shell
+    - Create `src/pages/OwnerOperatorSoftware.jsx`
+    - Add SEO component with title and description
+    - Import and compose section components (placeholders initially)
+    - _Requirements: 1.2, 1.3_
+  - [x] 1.3 Add route to App.jsx
+    - Import OwnerOperatorSoftware page
+    - Add route for `/owner-operator-software`
+    - _Requirements: 1.1, 1.4_
+
+- [x] 2. Implement hero and pain sections
+  - [x] 2.1 Create SoftwareHero component
+    - Create `src/components/sections/owner-operator/SoftwareHero.jsx`
+    - Implement gradient background with dot pattern
+    - Add headline, subheadline, trust line from data
+    - Add primary and secondary CTA buttons
+    - Implement scroll-to-section functionality for CTAs
+    - Add Framer Motion entrance animations
+    - _Requirements: 2.1-2.7_
+  - [x] 2.2 Create PainSection component
+    - Create `src/components/sections/owner-operator/PainSection.jsx`
+    - Display section title and pain point bullets with icons
+    - Display bridge statement
+    - Add ScrollReveal animation
+    - _Requirements: 3.1-3.3_
+  - [ ]* 2.3 Write unit tests for SoftwareHero
+    - Test headline, subheadline, trust line rendering
+    - Test CTA button presence and text
+    - _Requirements: 2.1-2.5_
+
+- [x] 3. Implement solution and time payback sections
+  - [x] 3.1 Create SolutionSection component
+    - Create `src/components/sections/owner-operator/SolutionSection.jsx`
+    - Add `id="solution-section"` for scroll targeting
+    - Display capabilities and outcomes in two-column layout
+    - Use icons for each item
+    - Add staggered ScrollReveal animation
+    - _Requirements: 4.1-4.3_
+  - [x] 3.2 Create TimePaybackSection component
+    - Create `src/components/sections/owner-operator/TimePaybackSection.jsx`
+    - Display time savings examples in grid layout
+    - Display positioning line
+    - Add ScrollReveal animation
+    - _Requirements: 5.1-5.3_
+  - [ ]* 3.3 Write unit tests for SolutionSection and TimePaybackSection
+    - Test all content items are rendered
+    - Test section IDs are present
+    - _Requirements: 4.1-4.3, 5.1-5.3_
+
+- [x] 4. Implement urgency and calendar sections
+  - [x] 4.1 Create UrgencySection component
+    - Create `src/components/sections/owner-operator/UrgencySection.jsx`
+    - Display "First 100" offer with accent styling
+    - Display trust reinforcement text
+    - Add ScrollReveal animation
+    - _Requirements: 6.1-6.3_
+  - [x] 4.2 Create CalendarSection component
+    - Create `src/components/sections/owner-operator/CalendarSection.jsx`
+    - Add `id="calendar-section"` for scroll targeting
+    - Display 3-step process
+    - Add CTA button
+    - Add placeholder for calendar widget embed
+    - Add ScrollReveal animation
+    - _Requirements: 7.1-7.5_
+  - [ ]* 4.3 Write unit tests for UrgencySection and CalendarSection
+    - Test all content items are rendered
+    - Test calendar placeholder is present
+    - _Requirements: 6.1-6.3, 7.1-7.4_
+
+- [x] 5. Implement qualification and CTA sections
+  - [x] 5.1 Create QualificationSection component
+    - Create `src/components/sections/owner-operator/QualificationSection.jsx`
+    - Display "For You" and "Not For You" in two columns
+    - Use check/x icons for visual distinction
+    - Add ScrollReveal animation
+    - _Requirements: 8.1-8.3_
+  - [x] 5.2 Create FooterCTA component
+    - Create `src/components/sections/owner-operator/FooterCTA.jsx`
+    - Full-width gradient background
+    - Display headline and CTA button
+    - Implement scroll-to-calendar functionality
+    - _Requirements: 9.1-9.3_
+  - [x] 5.3 Create StickyCTA component
+    - Create `src/components/sections/owner-operator/StickyCTA.jsx`
+    - Fixed position at bottom of screen
+    - Only visible on mobile (< 768px)
+    - Implement scroll-to-calendar functionality
+    - _Requirements: 10.1-10.5_
+  - [ ]* 5.4 Write unit tests for QualificationSection, FooterCTA, and StickyCTA
+    - Test all content items are rendered
+    - Test StickyCTA visibility logic
+    - _Requirements: 8.1-8.3, 9.1-9.2, 10.1-10.3_
+
+- [x] 6. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 7. Wire up page and add accessibility
+  - [x] 7.1 Complete OwnerOperatorSoftware page integration
+    - Import all section components
+    - Compose sections in correct order
+    - Verify scroll navigation works between sections
+    - _Requirements: 1.1-1.4, 2.6, 2.7, 9.3, 10.4_
+  - [x] 7.2 Add accessibility attributes
+    - Ensure proper heading hierarchy (h1, h2, h3)
+    - Add ARIA labels to icon buttons
+    - Verify keyboard navigation for all interactive elements
+    - _Requirements: 12.1-12.5_
+  - [ ]* 7.3 Write property test for route accessibility
+    - **Property 1: Route Accessibility**
+    - **Validates: Requirements 1.1, 1.4**
+  - [ ]* 7.4 Write property test for CTA scroll navigation
+    - **Property 2: CTA Scroll Navigation**
+    - **Validates: Requirements 2.6, 2.7, 9.3, 10.4**
+  - [ ]* 7.5 Write property test for mobile sticky CTA visibility
+    - **Property 3: Mobile Sticky CTA Visibility**
+    - **Validates: Requirements 10.1, 10.2**
+  - [ ]* 7.6 Write property test for content completeness
+    - **Property 4: Content Completeness**
+    - **Validates: Requirements 2.1-2.5, 3.1-3.3, 4.1-4.3, 5.1-5.3, 6.1-6.3, 7.1-7.4, 8.1-8.3, 9.1-9.2, 10.3**
+  - [ ]* 7.7 Write property test for SEO meta tags
+    - **Property 5: SEO Meta Tags**
+    - **Validates: Requirements 1.2, 1.3**
+  - [ ]* 7.8 Write property test for heading hierarchy
+    - **Property 6: Accessibility Heading Hierarchy**
+    - **Validates: Requirements 12.2**
+  - [ ]* 7.9 Write property test for keyboard accessibility
+    - **Property 7: Keyboard Accessibility**
+    - **Validates: Requirements 12.4, 12.5**
+
+- [x] 8. Final checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+## Notes
+
+- Tasks marked with `*` are optional and can be skipped for faster MVP
+- Each task references specific requirements for traceability
+- Checkpoints ensure incremental validation
+- Property tests validate universal correctness properties
+- Unit tests validate specific examples and edge cases
+- All components follow existing San Gabriel website patterns
+- Calendar script integration is a placeholder - actual script URL to be provided later
+
+
+---
+
+## Onboarding Form Implementation Tasks
+
+- [x] 9. Create onboarding form data structures and configuration
+  - [x] 9.1 Create onboardingFormConfig.js data file
+    - Create `src/data/onboardingFormConfig.js`
+    - Define shortForm and fullForm configurations
+    - Include business types, devices, operating systems, contact methods, time zones
+    - _Requirements: 23.1, 23.2, 23.3_
+  - [x] 9.2 Create onboardingService.js
+    - Create `src/services/onboardingService.js`
+    - Implement submitOnboarding, checkEmailAvailability, saveDraft, loadDraft, clearDraft functions
+    - Add localStorage integration for draft auto-save
+    - _Requirements: 22.1, 22.2, 22.5_
+  - [ ]* 9.3 Write unit tests for onboardingService
+    - Test API communication
+    - Test draft save/load/clear functionality
+    - _Requirements: 22.1, 22.2, 22.5_
+
+- [x] 10. Implement form step components (Part 1: Business & Qualification)
+  - [x] 10.1 Create BusinessInformationStep component
+    - Create `src/components/forms/onboarding/BusinessInformationStep.jsx`
+    - Implement all 8 required fields with validation
+    - Add email format validation
+    - Add phone number formatting
+    - Display inline validation errors
+    - _Requirements: 13.1-13.9_
+  - [x] 10.2 Create QualificationStep component
+    - Create `src/components/forms/onboarding/QualificationStep.jsx`
+    - Implement 4 qualification questions
+    - Add conditional eligibility message display
+    - _Requirements: 14.1-14.5_
+  - [ ]* 10.3 Write unit tests for BusinessInformationStep and QualificationStep
+    - Test field rendering and validation
+    - Test eligibility message display
+    - _Requirements: 13.1-13.9, 14.1-14.5_
+  - [ ]* 10.4 Write property test for qualification disqualification message
+    - **Property 17: Qualification Disqualification Message**
+    - **Validates: Requirements 14.5**
+
+- [x] 11. Implement form step components (Part 2: Assessment & Systems)
+  - [x] 11.1 Create TimeWorkflowStep component
+    - Create `src/components/forms/onboarding/TimeWorkflowStep.jsx`
+    - Implement hours slider and text inputs
+    - Add character limits (500 chars) for textareas
+    - _Requirements: 15.1-15.5_
+  - [x] 11.2 Create CurrentSystemsStep component
+    - Create `src/components/forms/onboarding/CurrentSystemsStep.jsx`
+    - Implement tool collection fields
+    - Allow "None" and "N/A" responses
+    - _Requirements: 16.1-16.7_
+  - [ ]* 11.3 Write unit tests for TimeWorkflowStep and CurrentSystemsStep
+    - Test field rendering and validation
+    - Test character limits
+    - _Requirements: 15.1-15.5, 16.1-16.7_
+
+- [x] 12. Implement form step components (Part 3: Setup & Consent)
+  - [x] 12.1 Create TechnicalSetupStep component
+    - Create `src/components/forms/onboarding/TechnicalSetupStep.jsx`
+    - Implement email confirmation matching
+    - Add email difference warning message
+    - Implement device and OS dropdowns
+    - _Requirements: 17.1-17.6_
+  - [x] 12.2 Create ConfirmationConsentStep component
+    - Create `src/components/forms/onboarding/ConfirmationConsentStep.jsx`
+    - Display scheduled call information (read-only)
+    - Implement 3 eligibility confirmation checkboxes
+    - Implement 3 required consent checkboxes
+    - Implement 1 optional consent checkbox
+    - Add links to Privacy Policy and Terms of Service
+    - _Requirements: 18.1-18.5, 19.1-19.5, 20.1-20.6_
+  - [x] 12.3 Create OptionalInformationStep component
+    - Create `src/components/forms/onboarding/OptionalInformationStep.jsx`
+    - Implement 3 optional questions
+    - Clearly mark as optional
+    - _Requirements: 21.1-21.5_
+  - [ ]* 12.4 Write unit tests for TechnicalSetupStep, ConfirmationConsentStep, and OptionalInformationStep
+    - Test email confirmation matching
+    - Test checkbox validation
+    - Test optional field handling
+    - _Requirements: 17.1-17.6, 18.1-18.5, 19.1-19.5, 20.1-20.6, 21.1-21.5_
+  - [ ]* 12.5 Write property test for email confirmation match
+    - **Property 9: Email Confirmation Match**
+    - **Validates: Requirements 17.2, 17.6**
+  - [ ]* 12.6 Write property test for email difference confirmation
+    - **Property 18: Email Difference Confirmation**
+    - **Validates: Requirements 17.6**
+  - [ ]* 12.7 Write property test for calendar call information display
+    - **Property 19: Calendar Call Information Display**
+    - **Validates: Requirements 19.1, 19.2**
+
+- [x] 13. Checkpoint - Ensure all form step tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 14. Implement form navigation and main form component
+  - [x] 14.1 Create FormHeader component
+    - Create `src/components/forms/onboarding/FormHeader.jsx`
+    - Display form title based on mode
+    - Implement progress indicator with step numbers
+    - _Requirements: 24.7_
+  - [x] 14.2 Create FormNavigation component
+    - Create `src/components/forms/onboarding/FormNavigation.jsx`
+    - Implement back/next buttons with disabled states
+    - Add keyboard navigation support (Enter key)
+    - _Requirements: 24.5_
+  - [x] 14.3 Create FormSubmission component
+    - Create `src/components/forms/onboarding/FormSubmission.jsx`
+    - Implement submit button with loading state
+    - Display error messages
+    - Display success confirmation with submission ID
+    - _Requirements: 22.3, 22.4, 22.5_
+  - [x] 14.4 Create OnboardingForm page component
+    - Create `src/pages/OnboardingForm.jsx`
+    - Implement multi-step form state management
+    - Add form mode detection (short vs full)
+    - Implement step validation before progression
+    - Add draft auto-save (every 30 seconds)
+    - Wire up all form step components
+    - _Requirements: 23.1-23.5_
+  - [x] 14.5 Add routes to App.jsx
+    - Add route for `/onboarding` (full form)
+    - Add route for `/onboarding/short` (short form)
+    - _Requirements: 23.3_
+  - [ ]* 14.6 Write unit tests for FormHeader, FormNavigation, and FormSubmission
+    - Test progress indicator updates
+    - Test button states
+    - Test submission flow
+    - _Requirements: 22.3, 22.4, 22.5, 24.5, 24.7_
+  - [ ]* 14.7 Write property test for form version step inclusion
+    - **Property 10: Form Version Step Inclusion**
+    - **Validates: Requirements 23.4, 23.5**
+  - [ ]* 14.8 Write property test for progress indicator updates
+    - **Property 22: Progress Indicator Updates**
+    - **Validates: Requirements 24.7**
+
+- [-] 15. Implement form validation and error handling
+  - [x] 15.1 Add comprehensive form validation
+    - Implement required field validation across all steps
+    - Add email format validation
+    - Add phone number format validation
+    - Add email confirmation matching validation
+    - Implement consent checkbox validation
+    - _Requirements: 13.9, 17.2, 18.5, 19.5, 20.5, 22.1_
+  - [x] 15.2 Implement error display and handling
+    - Display inline errors next to invalid fields
+    - Highlight invalid fields with red border
+    - Scroll to first error on validation failure
+    - Preserve data on submission failure
+    - _Requirements: 22.5, 24.4_
+  - [ ]* 15.3 Write property test for required field validation
+    - **Property 8: Required Field Validation**
+    - **Validates: Requirements 13.9, 18.5, 19.5, 20.5**
+  - [ ]* 15.4 Write property test for data persistence on error
+    - **Property 11: Data Persistence on Error**
+    - **Validates: Requirements 22.5**
+  - [ ]* 15.5 Write property test for consent checkbox requirement
+    - **Property 12: Consent Checkbox Requirement**
+    - **Validates: Requirements 20.1, 20.2, 20.3, 20.5**
+
+- [ ] 16. Implement form submission and data handling
+  - [x] 16.1 Implement form submission logic
+    - Connect form to onboardingService.submitOnboarding
+    - Generate and display submission ID on success
+    - Handle submission errors gracefully
+    - Clear draft on successful submission
+    - _Requirements: 22.1-22.5_
+  - [ ] 16.2 Add form data encryption (backend integration)
+    - Ensure sensitive fields (email, phone) are encrypted
+    - Verify encryption in API requests
+    - _Requirements: 22.6_
+  - [ ]* 16.3 Write property test for optional field submission
+    - **Property 13: Optional Field Submission**
+    - **Validates: Requirements 21.4, 21.5**
+  - [ ]* 16.4 Write property test for submission ID generation
+    - **Property 14: Submission ID Generation**
+    - **Validates: Requirements 22.3, 22.4**
+  - [ ]* 16.5 Write property test for form field data collection and storage
+    - **Property 16: Form Field Data Collection and Storage**
+    - **Validates: Requirements 13.1-13.8, 15.1-15.4, 16.1-16.3, 17.1, 17.4, 17.5, 19.3, 22.2**
+  - [ ]* 16.6 Write property test for data encryption at rest
+    - **Property 20: Data Encryption at Rest**
+    - **Validates: Requirements 22.6**
+
+- [x] 17. Checkpoint - Ensure all form validation and submission tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 18. Implement form accessibility and responsiveness
+  - [x] 18.1 Add accessibility attributes
+    - Ensure all form fields have associated labels
+    - Add ARIA labels for icons and buttons
+    - Implement ARIA live regions for validation errors
+    - Ensure proper heading hierarchy
+    - Verify keyboard navigation for all interactive elements
+    - _Requirements: 24.1, 24.2, 24.4, 24.5_
+  - [x] 18.2 Implement responsive design
+    - Single-column layout for mobile (< 768px)
+    - Centered layout for tablet (768-1024px)
+    - Two-column layout for desktop (> 1024px)
+    - Ensure no horizontal scrolling on any device
+    - Test touch-friendly input sizes (48px height)
+    - _Requirements: 24.6_
+  - [x] 18.3 Add helpful UI enhancements
+    - Add placeholder text and examples where appropriate
+    - Implement field helper text
+    - Add loading states for async operations
+    - Implement session timeout warning
+    - _Requirements: 24.3_
+  - [ ]* 18.4 Write property test for form accessibility
+    - **Property 15: Form Accessibility**
+    - **Validates: Requirements 24.1, 24.2, 24.4, 24.5**
+  - [ ]* 18.5 Write property test for form responsiveness
+    - **Property 21: Form Responsiveness**
+    - **Validates: Requirements 24.6**
+
+- [x] 19. Final checkpoint - Ensure all onboarding form tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+## Notes
+
+- Tasks marked with `*` are optional and can be skipped for faster MVP
+- Each task references specific requirements for traceability
+- Checkpoints ensure incremental validation
+- Property tests validate universal correctness properties
+- Unit tests validate specific examples and edge cases
+- All components follow existing San Gabriel website patterns
+- Backend API integration required for form submission and data encryption
+- Draft auto-save uses localStorage for client-side persistence
